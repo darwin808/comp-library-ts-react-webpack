@@ -12,7 +12,8 @@
       "isolatedModules": true,
       "noEmit": true,
       "jsx": "react",
-      "types": ["webpack-env"]
+      "types": ["webpack-env"],
+      "baseUrl": "src"
    },
    "include": ["src"]
 }
