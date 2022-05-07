@@ -1,9 +1,10 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/jsx-no-target-blank */
+// eslint-disable-next-line react-hooks/exhaustive-deps
 import React from "react"
 import { ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
-import { dummydata, tabList } from "constants/index"
+import { dummydata, tabList } from "constants"
 import { ContentViewer, MetaViewer, JsonDataViewer } from "views/index"
 import { Headers, Loader } from "components/index"
 import * as helper from "utils/index"

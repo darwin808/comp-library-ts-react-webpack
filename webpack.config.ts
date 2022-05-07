@@ -27,6 +27,7 @@ const config: Configuration = {
    },
    resolve: {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
+      modules: [path.resolve(__dirname), "node_modules"],
       fallback: {
          fs: false,
          tls: false,

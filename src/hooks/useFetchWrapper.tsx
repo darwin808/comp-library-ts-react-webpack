@@ -1,3 +1,4 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
 import React from "react"
 
 export const useFetchWrapper = (userAppSID: any, instanceZUID: any) => {
