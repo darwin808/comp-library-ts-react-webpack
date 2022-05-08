@@ -4,6 +4,7 @@ import Dotenv from "dotenv-webpack"
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 import "webpack-dev-server"
 import webpack from "webpack"
+import { CleanWebpackPlugin } from "clean-webpack-plugin"
 
 const config: Configuration = {
    entry: "./src/index.tsx",
@@ -45,11 +46,11 @@ const config: Configuration = {
    output: {
       path: path.resolve(__dirname, "build"),
       filename: "bundle.js",
+      library: "Explorer",
+      libraryTarget: "umd",
    },
    devServer: {
-      static: path.join(__dirname, "build"),
-      compress: true,
-      port: 3000,
+      static: "./build",
    },
    plugins: [
       new ForkTsCheckerWebpackPlugin({
@@ -61,6 +62,7 @@ const config: Configuration = {
       new webpack.ProvidePlugin({
          process: "process/browser",
       }),
+      new CleanWebpackPlugin(),
    ],
 }
 
