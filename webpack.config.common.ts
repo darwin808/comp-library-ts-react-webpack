@@ -44,14 +44,14 @@ const config: Configuration = {
       },
    },
    output: {
-      path: path.resolve(__dirname, "build"),
-      filename: "bundle.js",
+      path: path.resolve(__dirname, "dist"),
+      filename: "explorer.production.js",
       library: "Explorer",
       libraryTarget: "umd",
       publicPath: "",
    },
    devServer: {
-      static: "./build",
+      static: "./dist",
    },
    plugins: [
       new ForkTsCheckerWebpackPlugin({
