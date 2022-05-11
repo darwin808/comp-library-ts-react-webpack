@@ -8,6 +8,7 @@ import { ContentViewer, MetaViewer, JsonDataViewer } from "views/index"
 import { Headers, Loader } from "components/index"
 import * as helper from "utils/index"
 import { fetchData, fetchJSON, getPageData } from "services/index"
+import Card from "../Card"
 import {
    buttonStyles,
    containerStyle,
@@ -206,8 +207,9 @@ export const ZestyExplorer = ({ content = {} }: any) => {
 
    if (jsonData?.data === null || jsonData?.length == 0) {
       return (
-         <Box sx={verifyUserPrompt}>
-            <h1>Domain Not Valid</h1>
+         <Box sx={verifyUserPrompt} zIndex={100}>
+            <Card />
+            {/* <h1>Domain Not Valid</h1>
             <h1>Enter domain</h1>
             <input
                type="text"
@@ -215,7 +217,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                onChange={(e) => setdomain(e.target.value)}
             />
             <button onClick={handleCustomDomain}>ok</button>
-            <button onClick={() => window.location.reload}>close</button>
+            <button onClick={() => window.location.reload}>close</button> */}
          </Box>
       )
    }
