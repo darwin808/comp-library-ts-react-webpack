@@ -50,11 +50,12 @@ export const fetchData = async (
 
 export const fetchJSON = async (
    uri: string,
-   setFunc: (e: any) => void,
+   setFunc: (e: any) => any,
    token: string | any,
 ) => {
    console.log(token)
-   let data = ""
+   const data = ""
+   console.log(data, setFunc)
    const headers = {
       "Content-Type": "application/x-www-form-urlencoded",
    }
@@ -64,7 +65,17 @@ export const fetchJSON = async (
       referrerPolicy: "no-referrer",
       credentials: "omit",
       headers,
+   }).catch((e) => {
+      console.log(e)
+      return e
    })
-   data = await res.json()
-   res && setFunc({ data, response: res })
+
+   if (res.status === 200) {
+      return { data: await res.json(), res, error: false }
+      // data = await res.json()
+      // setFunc({ data, response: res })
+   } else {
+      return { data: null, res, error: false }
+      // setFunc({ data: null, response: res, error: true })
+   }
 }

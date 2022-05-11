@@ -48,6 +48,7 @@ const config: Configuration = {
       filename: "bundle.js",
       library: "Explorer",
       libraryTarget: "umd",
+      publicPath: "",
    },
    devServer: {
       static: "./build",

@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react"
-import { headerZUID } from "../../src/utils/index"
+import { headerZUID } from "utils"
 import AppBar from "@mui/material/AppBar"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"

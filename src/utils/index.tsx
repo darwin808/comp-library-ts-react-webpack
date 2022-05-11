@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { Box } from "@mui/system"
 import React from "react"
 import Fuse from "fuse.js"
@@ -99,7 +96,7 @@ export function setCookie(cname: string, cvalue: string, exdays: any) {
 }
 
 export function checkCookie() {
-   let user: string | null = getCookie("username")!
+   let user: string | null = getCookie("username")
    if (user != "") {
       alert("Welcome again " + user)
    } else {
@@ -119,7 +116,7 @@ export function updateToken(name: string, value: string) {
 export const scrollToView = (elementId: string) => {
    document
       .getElementById(elementId)
-      ?.scrollIntoView({ behavior: "smooth", block: "center" })!
+      ?.scrollIntoView({ behavior: "smooth", block: "center" })
 }
 
 export const handleEdit = async (
@@ -202,4 +199,22 @@ export const transformContent = (content: any, search: any) => {
    // display the result of search
    const data = search ? result2 : { content }
    return data
+}
+
+export function toggleOpenState(bool: boolean, setOpen: any, expandBody: any) {
+   setOpen(bool)
+   expandBody(bool)
+}
+
+export const getJsonUrl = (customDomain = "") => {
+   console.log(customDomain, "customdomain")
+   // return "https://kfg6bckb-dev.preview.stage.zesty.io/?toJSON"
+   if (
+      window.location.href.match(/(:[0-9]+||localhost)/) !== null &&
+      customDomain == ""
+   ) {
+      return window.location.href + "?toJSON"
+   }
+   return customDomain.replace(/\/$/, "") + "/?toJSON"
+   // return customDomain + "/?toJSON"
 }

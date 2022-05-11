@@ -10,10 +10,10 @@ import TableHead from "@mui/material/TableHead"
 import Button from "@mui/material/Button"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
-import { PrettyPrintJson } from "utils/index"
+import { PrettyPrintJson } from "utils"
 import { useTheme } from "@mui/system"
 import CloseIcon from "@mui/icons-material/Close"
-import * as helper from "utils/index"
+import * as helper from "utils"
 
 // dom access highlight function
 function activateWorkingElement(match: string): any {

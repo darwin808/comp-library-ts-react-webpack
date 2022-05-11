@@ -1,10 +1,9 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/jsx-no-target-blank */
-// eslint-disable-next-line react-hooks/exhaustive-deps
 import React from "react"
 import { ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
-import { dummydata, tabList } from "constants"
+import { dummydata, tabList } from "constants/index"
 import { ContentViewer, MetaViewer, JsonDataViewer } from "views/index"
 import { Headers, Loader } from "components/index"
 import * as helper from "utils/index"
@@ -48,14 +47,13 @@ const ZestyExplorerBrowser = ({
    const [metaData, setMetaData] = React.useState([])
    // for loading of tabs
    const [time, settime] = React.useState(0)
-   // const instanceZUID = helper.getCookie("INSTANCE_ZUID") || "8-c2c78385be-s38gqk"
-   const userAppSID = helper.getCookie("APP_SID") || process.env.ZESTY_TEST_APP_SID
+   const userAppSID = helper.getCookie("APP_SID")
    const token = userAppSID
-   const itemZUID = jsonData.data.meta.zuid
-   const modelZUID = jsonData.data.meta.model.zuid
-   const instanceZUID =
-      helper.headerZUID(jsonData.response) || process.env.NEXT_PUBLIC_INSTANCE_ZUID
+   const itemZUID = jsonData?.data?.meta?.zuid
+   const modelZUID = jsonData?.data?.meta?.model?.zuid
+   const instanceZUID = helper.headerZUID(jsonData.res)
 
+   console.log(jsonData, 1111)
    // get the instance view models  on initial load
    const { loading, verifyFailed, verifySuccess, instances, views, models } =
       useFetchWrapper(userAppSID, instanceZUID)
@@ -64,7 +62,7 @@ const ZestyExplorerBrowser = ({
 
    // this is for json data viewer
    const data = helper.transformContent(content, search)
-   console.log(pageData, "This the Pagedata")
+   console.log(pageData, url, "This the Pagedata")
 
    const getFinalData = async () => {
       await fetchData(url, setMetaData, token)
@@ -144,23 +142,23 @@ const ZestyExplorerBrowser = ({
    )
 }
 
-const getJsonUrl = () => {
-   if (window.location.href !== "http://test.zesty.io:3000/") {
-      return window.location.href + "?toJSON"
-   }
-   return "https://qzp3zx5t-dev.webengine.zesty.io/?toJSON"
-}
 // Main ZESTY EXPLORER
 export const ZestyExplorer = ({ content = {} }: any) => {
-   const jsonUrl = getJsonUrl()
-   const [jsonData, setJsonData] = React.useState([])
+   const [domain, setdomain] = React.useState("")
+   const [jsonUrl, setjsonUrl] = React.useState(helper.getJsonUrl(domain))
+   const [jsonData, setJsonData] = React.useState<any>([])
    const token = helper.getCookie("APP_SID") || process.env.ZESTY_TEST_APP_SID
    const [open, setOpen] = React.useState(false)
    const [pageData, setPageData] = React.useState<any>("")
    const [response, setResponse] = React.useState<any>("")
    const [themeMode, themeToggler, mountedComponent] = useDarkMode()
-
    console.log(themeMode, mountedComponent)
+
+   // get json data
+   const fetchJsonData = async () => {
+      const res = await fetchJSON(jsonUrl, setJsonData, token)
+      res && setJsonData(res)
+   }
 
    const getData = async () => {
       const { data, response } = await getPageData()
@@ -168,18 +166,27 @@ export const ZestyExplorer = ({ content = {} }: any) => {
       response && setResponse(response)
    }
 
-   const getJsonData = async () => {
-      await fetchJSON(jsonUrl, setJsonData, token)
-   }
    // check if content is available
    React.useEffect(() => {
-      getJsonData()
+      fetchJsonData()
       if (content && Object.keys(content).length === 0) {
          getData()
       } else {
          setPageData(content)
       }
    }, [])
+
+   React.useEffect(() => {
+      console.log(jsonUrl, domain, "domain")
+   }, [domain, jsonUrl])
+
+   React.useEffect(() => {
+      fetchJsonData()
+   }, [jsonUrl])
+
+   const handleCustomDomain = () => {
+      setjsonUrl(helper.getJsonUrl(domain))
+   }
 
    const searchObject = { ...pageData }
    // unset navigations for faster search
@@ -191,9 +198,20 @@ export const ZestyExplorer = ({ content = {} }: any) => {
       return null
    }
 
-   function toggleOpenState(bool: boolean) {
-      setOpen(bool)
-      expandBody(bool)
+   if (jsonData?.data === null || jsonData?.length == 0) {
+      return (
+         <Box sx={verifyUserPrompt}>
+            <h1>Domain Not Valid</h1>
+            <h1>Enter domain</h1>
+            <input
+               type="text"
+               value={domain}
+               onChange={(e) => setdomain(e.target.value)}
+            />
+            <button onClick={handleCustomDomain}>ok</button>
+            <button onClick={() => window.location.reload}>close</button>
+         </Box>
+      )
    }
 
    return (
@@ -207,7 +225,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
             {!open && (
                <button
                   type="button"
-                  onClick={() => toggleOpenState(true)}
+                  onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
                   style={buttonStyles}
                >
                   <img
@@ -229,7 +247,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                      jsonData={jsonData}
                   >
                      <Button
-                        onClick={() => toggleOpenState(false)}
+                        onClick={() => helper.toggleOpenState(false, setOpen, expandBody)}
                         variant="outlined"
                         size="small"
                      >
