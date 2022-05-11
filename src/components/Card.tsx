@@ -11,22 +11,22 @@ export default function OutlinedCard({ handleCustomDomain, value, onChange }: an
    const card = (
       <React.Fragment>
          <CardContent>
-            <Typography variant="h5" component={"div"} color="text.primary" gutterBottom>
+            <Typography color="text.secondary" gutterBottom sx={{ fontSize: "14" }}>
                Domain Not Valid
             </Typography>
-            <Typography paddingY={2} variant="h5" component="div">
+            <Typography variant="h5" component="div">
                Enter Domain
             </Typography>
             <TextField
                id="outlined-basic"
-               label="Outlined"
+               label="Custom Domain"
                variant="outlined"
                value={value}
                onChange={onChange}
             />
          </CardContent>
          <CardActions>
-            <Button size="small" onClick={handleCustomDomain}>
+            <Button size="small" variant="contained" onClick={handleCustomDomain}>
                Save
             </Button>
             <Button
