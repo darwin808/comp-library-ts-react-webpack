@@ -168,12 +168,18 @@ export const ZestyExplorer = ({ content = {} }: any) => {
 
    // check if content is available
    React.useEffect(() => {
-      fetchJsonData()
-      if (content && Object.keys(content).length === 0) {
-         getData()
-      } else {
-         setPageData(content)
+      const fetchJsonData = async () => {
+         const res = await fetchJSON(jsonUrl, setJsonData, token)
+         res && setJsonData(res)
       }
+
+      fetchJsonData().then((e) => {
+         if (content && Object.keys(content).length === 0) {
+            getData()
+         } else {
+            setPageData(content)
+         }
+      })
    }, [])
 
    React.useEffect(() => {
