@@ -89,15 +89,12 @@ function Row({
       valueType = "object"
    }
 
-   // const url = `https://${instanceZUID}.api.zesty.io/v1/content/models/${modelZUID}/items/${itemZUID}`
-   // const token = helper.getCookie("APP_SID") || process.env.ZESTY_TEST_APP_SID
-
    // @ts-ignore
    const showCloseBtn = text === workingElement?.innerText
 
    return (
       <React.Fragment>
-         <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+         <TableRow sx={{ "& > *": { borderBottom: "unset" }, minHeight: "5rem" }}>
             {/* Row Data  */}
             <TableCell sx={{ width: "1rem" }}>
                <IconButton
