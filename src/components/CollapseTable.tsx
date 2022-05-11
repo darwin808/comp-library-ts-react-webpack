@@ -126,22 +126,35 @@ function Row({
                   {value}
                </span>
                {showCloseBtn && (
-                  <Button
-                     size="small"
-                     onClick={() => {
-                        deactivateWorkingElement(
-                           workingElement,
-                           keyName,
-                           metaData,
-                           url,
-                           token,
-                        )
-                        setWorkingElement("")
-                        settext("")
-                     }}
-                  >
-                     <CloseIcon />
-                  </Button>
+                  <>
+                     <Button
+                        size="small"
+                        onClick={() => {
+                           setWorkingElement("")
+                           settext("")
+                        }}
+                     >
+                        <CloseIcon />
+                     </Button>
+
+                     <Button
+                        size="small"
+                        onClick={() => {
+                           deactivateWorkingElement(
+                              workingElement,
+                              keyName,
+                              metaData,
+                              url,
+                              token,
+                           )
+                           setWorkingElement("")
+                           settext("")
+                           window.location.reload
+                        }}
+                     >
+                        Save
+                     </Button>
+                  </>
                )}
             </TableCell>
             <TableCell align="left">{value.length}</TableCell>
