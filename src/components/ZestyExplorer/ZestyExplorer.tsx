@@ -207,7 +207,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
 
    if (jsonData?.data === null || jsonData?.length == 0) {
       return (
-         <Box sx={verifyUserPrompt} zIndex={100}>
+         <Box sx={verifyUserPrompt} zIndex={1000}>
             <Card
                handleCustomDomain={handleCustomDomain}
                value={domain}
