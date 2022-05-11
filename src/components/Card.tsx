@@ -5,8 +5,9 @@ import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
+import { TextField } from "@mui/material"
 
-export default function OutlinedCard({ handleCustomDomain }: any) {
+export default function OutlinedCard({ handleCustomDomain, value, onChange }: any) {
    const card = (
       <React.Fragment>
          <CardContent>
@@ -16,6 +17,13 @@ export default function OutlinedCard({ handleCustomDomain }: any) {
             <Typography variant="h5" component="div">
                Enter Domain
             </Typography>
+            <TextField
+               id="outlined-basic"
+               label="Outlined"
+               variant="outlined"
+               value={value}
+               onChange={onChange}
+            />
          </CardContent>
          <CardActions>
             <Button size="small" onClick={handleCustomDomain}>

@@ -208,7 +208,11 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    if (jsonData?.data === null || jsonData?.length == 0) {
       return (
          <Box sx={verifyUserPrompt} zIndex={100}>
-            <Card />
+            <Card
+               handleCustomDomain={handleCustomDomain}
+               value={domain}
+               onChange={(e: any) => setdomain(e.target.value)}
+            />
             {/* <h1>Domain Not Valid</h1>
             <h1>Enter domain</h1>
             <input
