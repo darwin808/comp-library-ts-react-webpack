@@ -40,8 +40,15 @@ export const Headers = ({ response, children, content }: Props) => {
                   display: "flex",
                }}
             >
-               <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                  <Box width={1} height={1}>
+               <Box
+                  sx={{
+                     display: "flex",
+                     alignItems: "center",
+                     justifyContent: "space-evenly",
+                     gap: "1rem",
+                  }}
+               >
+                  <Box>
                      <img
                         src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
                         width="62px"
