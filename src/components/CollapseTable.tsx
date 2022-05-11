@@ -32,20 +32,21 @@ function activateWorkingElement(match: string): any {
    return workingElement
 }
 
-function deactivateWorkingElement(
+const deactivateWorkingElement = async (
    workingElement: any,
    keyName: string,
    metaData: string,
    url: string | any,
    token: string | any,
    save: boolean,
-): any {
+) => {
    if (undefined !== workingElement) {
       // @ts-ignore
       save &&
-         helper.handleEdit(metaData, url, token, {
+         (await helper.handleEdit(metaData, url, token, {
             [`${keyName}`]: workingElement?.innerText,
-         })
+         }))
+      save && (await window.location.reload())
       console.log("Deactivating", workingElement)
       workingElement.style.border = "none"
       workingElement.setAttribute("contentEditable", false)
@@ -160,9 +161,6 @@ function Row({
                            )
                            setWorkingElement("")
                            settext("")
-                           setTimeout(() => {
-                              window.location.reload()
-                           }, 1)
                         }}
                      >
                         Save
