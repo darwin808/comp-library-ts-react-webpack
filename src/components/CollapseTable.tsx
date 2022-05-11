@@ -94,7 +94,7 @@ function Row({
 
    return (
       <React.Fragment>
-         <TableRow sx={{ "& > *": { borderBottom: "unset" }, minHeight: "5rem" }}>
+         <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
             {/* Row Data  */}
             <TableCell sx={{ width: "1rem" }}>
                <IconButton
@@ -110,6 +110,7 @@ function Row({
             </TableCell>
             <TableCell align="left">{valueType}</TableCell>
             <TableCell
+               sx={{ height: "5rem" }}
                align="left"
                onClick={() => {
                   helper.scrollToView("activeEl")
