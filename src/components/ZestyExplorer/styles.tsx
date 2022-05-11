@@ -26,8 +26,8 @@ export const zestyStyles = {
 }
 export const verifyUserPrompt = {
    position: "fixed",
-   top: "40%",
-   left: "15%",
+   top: "5%",
+   right: "5%",
 } as const
 
 export const zestyWrapper = {
