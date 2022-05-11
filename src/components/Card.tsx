@@ -7,10 +7,12 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import { TextField } from "@mui/material"
 
+const imgUrl = "https://brand.zesty.io/zesty-io-logo.svg"
 export default function OutlinedCard({ handleCustomDomain, value, onChange }: any) {
    const card = (
       <React.Fragment>
          <CardContent>
+            <img src={imgUrl} alt="Zesty Explorer" width={"50"} height={"50"} />
             <Typography color="text.secondary" gutterBottom sx={{ fontSize: "14" }}>
                Domain Not Valid
             </Typography>
