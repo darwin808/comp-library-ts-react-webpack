@@ -213,15 +213,6 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                value={domain}
                onChange={(e: any) => setdomain(e.target.value)}
             />
-            {/* <h1>Domain Not Valid</h1>
-            <h1>Enter domain</h1>
-            <input
-               type="text"
-               value={domain}
-               onChange={(e) => setdomain(e.target.value)}
-            />
-            <button onClick={handleCustomDomain}>ok</button>
-            <button onClick={() => window.location.reload}>close</button> */}
          </Box>
       )
    }
