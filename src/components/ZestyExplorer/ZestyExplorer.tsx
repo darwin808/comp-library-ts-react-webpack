@@ -53,7 +53,7 @@ const ZestyExplorerBrowser = ({
    const modelZUID = jsonData?.data?.meta?.model?.zuid
    const instanceZUID = helper.headerZUID(jsonData.res)
 
-   console.log(jsonData, 1111)
+   console.log(jsonData, "jsondata")
    // get the instance view models  on initial load
    const { loading, verifyFailed, verifySuccess, instances, views, models } =
       useFetchWrapper(userAppSID, instanceZUID)

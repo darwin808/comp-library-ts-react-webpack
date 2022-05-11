@@ -40,8 +40,16 @@ export const Headers = ({ response, children, content }: Props) => {
                   display: "flex",
                }}
             >
-               <Box sx={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-                  <Typography
+               <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                  <Box width={1} height={1}>
+                     <img
+                        src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
+                        width="62px"
+                        height="62px"
+                        alt="Zesty.io Logo"
+                     />
+                  </Box>
+                  {/* <Typography
                      variant="h6"
                      noWrap
                      component="div"
@@ -53,7 +61,7 @@ export const Headers = ({ response, children, content }: Props) => {
                         height="62px"
                         alt="Zesty.io Logo"
                      />
-                  </Typography>
+                  </Typography> */}
 
                   <Typography
                      sx={{ fontSize: "14px", whiteSpace: "normal" }}
@@ -65,7 +73,7 @@ export const Headers = ({ response, children, content }: Props) => {
                      Content Model
                   </Typography>
                </Box>
-               <Box>
+               <Box gap={4}>
                   <Button
                      href={`https://accounts.zesty.io/instances/${content?.zestyInstanceZUID}`}
                      variant="contained"
