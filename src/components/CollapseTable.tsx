@@ -160,7 +160,9 @@ function Row({
                            )
                            setWorkingElement("")
                            settext("")
-                           window.location.reload()
+                           setTimeout(() => {
+                              window.location.reload()
+                           }, 1)
                         }}
                      >
                         Save
