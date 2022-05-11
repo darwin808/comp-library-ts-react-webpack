@@ -80,7 +80,7 @@ export const Headers = ({ response, children, content }: Props) => {
                      Content Model
                   </Typography>
                </Box>
-               <Box gap={4}>
+               <Box sx={{ display: "flex", gap: "1rem", paddingLeft: "1rem" }}>
                   <Button
                      href={`https://accounts.zesty.io/instances/${content?.zestyInstanceZUID}`}
                      variant="contained"
