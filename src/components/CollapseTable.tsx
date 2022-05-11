@@ -110,7 +110,6 @@ function Row({
             </TableCell>
             <TableCell align="left">{valueType}</TableCell>
             <TableCell
-               sx={{ height: "5rem" }}
                align="left"
                onClick={() => {
                   helper.scrollToView("activeEl")
