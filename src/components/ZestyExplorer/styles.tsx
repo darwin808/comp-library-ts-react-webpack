@@ -37,7 +37,7 @@ export const zestyWrapper = {
    left: "-40vw",
    bottom: "0",
    transition: "left 250ms ease",
-   zIndex: "9999999999999999",
+   zIndex: "2147483647",
    boxShadow: "0px 0px 15px #000",
 } as const
 
