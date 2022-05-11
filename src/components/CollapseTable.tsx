@@ -38,12 +38,14 @@ function deactivateWorkingElement(
    metaData: string,
    url: string | any,
    token: string | any,
+   save: boolean,
 ): any {
    if (undefined !== workingElement) {
       // @ts-ignore
-      helper.handleEdit(metaData, url, token, {
-         [`${keyName}`]: workingElement?.innerText,
-      })
+      save &&
+         helper.handleEdit(metaData, url, token, {
+            [`${keyName}`]: workingElement?.innerText,
+         })
       console.log("Deactivating", workingElement)
       workingElement.style.border = "none"
       workingElement.setAttribute("contentEditable", false)
@@ -130,6 +132,14 @@ function Row({
                      <Button
                         size="small"
                         onClick={() => {
+                           deactivateWorkingElement(
+                              workingElement,
+                              keyName,
+                              metaData,
+                              url,
+                              token,
+                              false,
+                           )
                            setWorkingElement("")
                            settext("")
                         }}
@@ -146,6 +156,7 @@ function Row({
                               metaData,
                               url,
                               token,
+                              true,
                            )
                            setWorkingElement("")
                            settext("")
