@@ -105,10 +105,9 @@ export const ZestyExplorer = ({ content = {} }: any) => {
          <Helmet>
             <script src="https://cdn.jsdelivr.net/gh/zesty-io/fetch-wrapper@latest/dist/index.min.js" />
          </Helmet>
-         <ThemeProvider theme={getTheme("light", themeToggler)}>
+         {/* <ThemeProvider theme={getTheme("light", themeToggler)}>
             <CssBaseline />
-            {/* ZESTY LOGO  bottom right*/}
-            {/* {!open && (
+            {!open && (
                <button
                   type="button"
                   onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
@@ -122,9 +121,9 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                   />
                   <span style={zestyStyles}>Compass</span>
                </button>
-            )} */}
+            )}
 
-            {/* {open && (
+            {open && (
                <Box>
                   <ZestyExplorerBrowser
                      response={response}
@@ -141,8 +140,8 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                      </Button>
                   </ZestyExplorerBrowser>
                </Box>
-            )} */}
-         </ThemeProvider>
+            )}
+         </ThemeProvider> */}
       </div>
    )
 }
