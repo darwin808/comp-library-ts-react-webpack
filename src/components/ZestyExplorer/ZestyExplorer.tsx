@@ -84,28 +84,30 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    // custom nav tree building
    delete searchObject.navigationCustom
 
-   // if (!helper.canUseDOM()) {
-   //    return null
-   // }
-
-   if (jsonData?.data === null || jsonData?.length == 0) {
-      return <></>
-      // <div>
-      //    <Card
-      //       handleCustomDomain={handleCustomDomain}
-      //       value={domain}
-      //       onChange={(e: any) => setdomain(e.target.value)}
-      //    />
-      // </div>
+   if (!helper.canUseDOM()) {
+      return null
    }
+
+   // if (jsonData?.data === null || jsonData?.length == 0) {
+   //    return (
+   //       <Box sx={verifyUserPrompt} zIndex={2147483647}>
+   //          <Card
+   //             handleCustomDomain={handleCustomDomain}
+   //             value={domain}
+   //             onChange={(e: any) => setdomain(e.target.value)}
+   //          />
+   //       </Box>
+   //    )
+   // }
 
    return (
       <div id={"zestyExplorer"} style={zestyWrapper}>
-         {/* <Helmet>
+         <Helmet>
             <script src="https://cdn.jsdelivr.net/gh/zesty-io/fetch-wrapper@latest/dist/index.min.js" />
-         </Helmet> */}
-         {/* <ThemeProvider theme={getTheme("light", themeToggler)}>
+         </Helmet>
+         <ThemeProvider theme={getTheme("light", themeToggler)}>
             <CssBaseline />
+            {/* ZESTY LOGO  bottom right*/}
             {!open && (
                <button
                   type="button"
@@ -140,7 +142,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                   </ZestyExplorerBrowser>
                </Box>
             )}
-         </ThemeProvider> */}
+         </ThemeProvider>
       </div>
    )
 }
