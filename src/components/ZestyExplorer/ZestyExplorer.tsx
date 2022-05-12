@@ -84,20 +84,19 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    // custom nav tree building
    delete searchObject.navigationCustom
 
-   if (!helper.canUseDOM()) {
-      return null
-   }
+   // if (!helper.canUseDOM()) {
+   //    return null
+   // }
 
    if (jsonData?.data === null || jsonData?.length == 0) {
-      return (
-         <div>
-            {/* <Card
-               handleCustomDomain={handleCustomDomain}
-               value={domain}
-               onChange={(e: any) => setdomain(e.target.value)}
-            /> */}
-         </div>
-      )
+      return null
+      // <div>
+      //    <Card
+      //       handleCustomDomain={handleCustomDomain}
+      //       value={domain}
+      //       onChange={(e: any) => setdomain(e.target.value)}
+      //    />
+      // </div>
    }
 
    return (
