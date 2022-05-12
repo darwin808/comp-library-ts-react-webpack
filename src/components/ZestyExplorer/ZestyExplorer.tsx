@@ -89,7 +89,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    // }
 
    if (jsonData?.data === null || jsonData?.length == 0) {
-      return null
+      return <></>
       // <div>
       //    <Card
       //       handleCustomDomain={handleCustomDomain}
