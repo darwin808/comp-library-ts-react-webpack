@@ -46,7 +46,7 @@ const deactivateWorkingElement = async (
          (await helper.handleEdit(metaData, url, token, {
             [`${keyName}`]: workingElement?.innerText,
          }))
-      // save && (await window.location.reload())
+      save && (await window.location.reload())
       console.log("Deactivating", workingElement)
       workingElement.style.border = "none"
       workingElement.setAttribute("contentEditable", false)
@@ -239,7 +239,7 @@ function Row({
    )
 }
 
-export default function CollapsibleTable({ metaData, data = {}, url, token }: any) {
+export const CollapsibleTable = ({ metaData, data = {}, url, token }: any) => {
    const [workingElement, setWorkingElement] = React.useState("")
 
    return (

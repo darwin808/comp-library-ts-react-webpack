@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography"
 import { TextField } from "@mui/material"
 
 const imgUrl = "https://brand.zesty.io/zesty-io-logo.svg"
-export default function OutlinedCard({ handleCustomDomain, value, onChange }: any) {
+export const OutlineCard = ({ handleCustomDomain, value, onChange }: any) => {
    const card = (
       <React.Fragment>
          <CardContent>
@@ -17,11 +17,11 @@ export default function OutlinedCard({ handleCustomDomain, value, onChange }: an
                Domain Not Valid
             </Typography>
             <Typography variant="h5" component="div">
-               Enter Domain
+               Override Domain
             </Typography>
             <TextField
                id="outlined-basic"
-               label="Custom Domain"
+               label="Enter WebEngine Domain"
                variant="outlined"
                value={value}
                onChange={onChange}
