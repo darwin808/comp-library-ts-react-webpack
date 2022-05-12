@@ -91,11 +91,11 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    if (jsonData?.data === null || jsonData?.length == 0) {
       return (
          <div style={verifyUserPrompt}>
-            <Card
+            {/* <Card
                handleCustomDomain={handleCustomDomain}
                value={domain}
                onChange={(e: any) => setdomain(e.target.value)}
-            />
+            /> */}
          </div>
       )
    }
