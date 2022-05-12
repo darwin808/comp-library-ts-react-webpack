@@ -102,9 +102,9 @@ export const ZestyExplorer = ({ content = {} }: any) => {
 
    return (
       <div id={"zestyExplorer"} style={zestyWrapper}>
-         <Helmet>
+         {/* <Helmet>
             <script src="https://cdn.jsdelivr.net/gh/zesty-io/fetch-wrapper@latest/dist/index.min.js" />
-         </Helmet>
+         </Helmet> */}
          {/* <ThemeProvider theme={getTheme("light", themeToggler)}>
             <CssBaseline />
             {!open && (
