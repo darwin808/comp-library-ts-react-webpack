@@ -31,7 +31,7 @@ export const TabContainer = ({ tabList, settime, setcurrentTab }: any) => {
                aria-label="scrollable auto tabs example"
             >
                {tabList.map((e: any) => (
-                  <CustomBtn label={e.label} value={e.value} />
+                  <Tab label={e.label} value={e.value} />
                ))}
             </Tabs>
          </Box>
@@ -39,10 +39,10 @@ export const TabContainer = ({ tabList, settime, setcurrentTab }: any) => {
    )
 }
 
-export const CustomBtn = ({ label, value }: any) => {
-   return (
-      <Button variant="contained" color="secondary" size="small">
-         {label}
-      </Button>
-   )
-}
+// export const CustomBtn = ({ label, value }: any) => {
+//    return (
+//       <Button variant="contained" color="secondary" size="small">
+//          {label}
+//       </Button>
+//    )
+// }
