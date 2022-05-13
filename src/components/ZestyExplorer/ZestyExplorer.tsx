@@ -105,44 +105,41 @@ export const ZestyExplorer = ({ content = {} }: any) => {
          <Helmet>
             <script src="https://cdn.jsdelivr.net/gh/zesty-io/fetch-wrapper@latest/dist/index.min.js" />
          </Helmet>
-         <ThemeProvider theme={getTheme("light", themeToggler)}>
-            <CssBaseline />
-            {/* ZESTY LOGO  bottom right*/}
-            {!open && (
-               <button
-                  type="button"
-                  onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
-                  style={buttonStyles}
-               >
-                  <img
-                     src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
-                     width="32px"
-                     height="32px"
-                     alt="Zesty.io Logo"
-                  />
-                  <span style={zestyStyles}>Compass</span>
-               </button>
-            )}
+         {/* ZESTY LOGO  bottom right*/}
+         {!open && (
+            <button
+               type="button"
+               onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
+               style={buttonStyles}
+            >
+               <img
+                  src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
+                  width="32px"
+                  height="32px"
+                  alt="Zesty.io Logo"
+               />
+               <span style={zestyStyles}>Compass</span>
+            </button>
+         )}
 
-            {open && (
-               <Box>
-                  <ZestyExplorerBrowser
-                     response={response}
-                     pageData={pageData}
-                     contentData={searchObject}
-                     jsonData={jsonData}
+         {open && (
+            <Box>
+               <ZestyExplorerBrowser
+                  response={response}
+                  pageData={pageData}
+                  contentData={searchObject}
+                  jsonData={jsonData}
+               >
+                  <Button
+                     onClick={() => helper.toggleOpenState(false, setOpen, expandBody)}
+                     variant="outlined"
+                     size="small"
                   >
-                     <Button
-                        onClick={() => helper.toggleOpenState(false, setOpen, expandBody)}
-                        variant="outlined"
-                        size="small"
-                     >
-                        <CloseFullscreenIcon />
-                     </Button>
-                  </ZestyExplorerBrowser>
-               </Box>
-            )}
-         </ThemeProvider>
+                     <CloseFullscreenIcon />
+                  </Button>
+               </ZestyExplorerBrowser>
+            </Box>
+         )}
       </div>
    )
 }
