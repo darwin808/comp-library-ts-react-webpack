@@ -14,7 +14,6 @@ import { useDarkMode } from "hooks"
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen"
 import { Helmet } from "react-helmet"
 import { ZestyExplorerBrowser } from "./ZestyExplorerBrowser"
-import { StyledEngineProvider } from "@mui/material/styles"
 
 // dom access highlight function
 const expandBody = (bool: boolean) => {
@@ -106,48 +105,44 @@ export const ZestyExplorer = ({ content = {} }: any) => {
          <Helmet>
             <script src="https://cdn.jsdelivr.net/gh/zesty-io/fetch-wrapper@latest/dist/index.min.js" />
          </Helmet>
-         <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={getTheme("light", themeToggler)}>
-               <CssBaseline />
-               {/* ZESTY LOGO  bottom right*/}
-               {!open && (
-                  <button
-                     type="button"
-                     onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
-                     style={buttonStyles}
-                  >
-                     <img
-                        src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
-                        width="32px"
-                        height="32px"
-                        alt="Zesty.io Logo"
-                     />
-                     <span style={zestyStyles}>Compass</span>
-                  </button>
-               )}
+         <ThemeProvider theme={getTheme("light", themeToggler)}>
+            <CssBaseline />
+            {/* ZESTY LOGO  bottom right*/}
+            {!open && (
+               <button
+                  type="button"
+                  onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
+                  style={buttonStyles}
+               >
+                  <img
+                     src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
+                     width="32px"
+                     height="32px"
+                     alt="Zesty.io Logo"
+                  />
+                  <span style={zestyStyles}>Compass</span>
+               </button>
+            )}
 
-               {open && (
-                  <Box>
-                     <ZestyExplorerBrowser
-                        response={response}
-                        pageData={pageData}
-                        contentData={searchObject}
-                        jsonData={jsonData}
+            {open && (
+               <Box>
+                  <ZestyExplorerBrowser
+                     response={response}
+                     pageData={pageData}
+                     contentData={searchObject}
+                     jsonData={jsonData}
+                  >
+                     <Button
+                        onClick={() => helper.toggleOpenState(false, setOpen, expandBody)}
+                        variant="outlined"
+                        size="small"
                      >
-                        <Button
-                           onClick={() =>
-                              helper.toggleOpenState(false, setOpen, expandBody)
-                           }
-                           variant="outlined"
-                           size="small"
-                        >
-                           <CloseFullscreenIcon />
-                        </Button>
-                     </ZestyExplorerBrowser>
-                  </Box>
-               )}
-            </ThemeProvider>
-         </StyledEngineProvider>
+                        <CloseFullscreenIcon />
+                     </Button>
+                  </ZestyExplorerBrowser>
+               </Box>
+            )}
+         </ThemeProvider>
       </div>
    )
 }

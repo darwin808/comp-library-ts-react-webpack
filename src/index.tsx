@@ -3,6 +3,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { ZestyExplorer } from "./components"
 import { canUseDOM } from "./utils/index"
+import { StyledEngineProvider } from "@mui/material/styles"
 
 if (process.env.NODE_ENV === "production") {
    console.log = () => {}
@@ -16,7 +17,12 @@ export const main = () => {
       return null
    }
    document.body.innerHTML += '<div id="zesty-explorer"></div>'
-   ReactDOM.render(<ZestyExplorer />, document.getElementById("zesty-explorer"))
+   ReactDOM.render(
+      <StyledEngineProvider injectFirst>
+         <ZestyExplorer />
+      </StyledEngineProvider>,
+      document.getElementById("zesty-explorer"),
+   )
 }
 
 main()
