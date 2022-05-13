@@ -31,7 +31,12 @@ export const TabContainer = ({ tabList, settime, setcurrentTab }: any) => {
                aria-label="scrollable auto tabs example"
             >
                {tabList.map((e: any) => (
-                  <Tab label={e.label} value={e.value} />
+                  <Tab
+                     sx={{ background: "aqua" }}
+                     label={e.label}
+                     value={e.value}
+                     className="zesty"
+                  />
                ))}
             </Tabs>
          </Box>
