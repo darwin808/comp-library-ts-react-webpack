@@ -1,12 +1,13 @@
 import * as React from "react"
+import Box from "@mui/material/Box"
 import Collapse from "@mui/material/Collapse"
 import IconButton from "@mui/material/IconButton"
-import { Box, Button } from "@mui/material"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell, { tableCellClasses } from "@mui/material/TableCell"
 import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
+import Button from "@mui/material/Button"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { PrettyPrintJson } from "utils"
@@ -180,10 +181,8 @@ function Row({
                   position: "relative",
                }}
             >
-               <Button
-                  variant="contained"
-                  color="secondary"
-                  size="small"
+               <button
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
                      navigator.clipboard.writeText(`content.${keyName}`)
                      setclipboardCopy(true)
@@ -191,7 +190,7 @@ function Row({
                   }}
                >
                   {`{content.${keyName}}`}
-               </Button>
+               </button>
                <Box
                   sx={{
                      position: "absolute",
