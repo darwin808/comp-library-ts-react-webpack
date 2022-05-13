@@ -101,7 +101,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    }
 
    return (
-      <div id={"zestyExplorer"} style={zestyWrapper}>
+      <Box id={"zestyExplorer"} sx={zestyWrapper}>
          <Helmet>
             <script src="https://cdn.jsdelivr.net/gh/zesty-io/fetch-wrapper@latest/dist/index.min.js" />
          </Helmet>
@@ -109,10 +109,9 @@ export const ZestyExplorer = ({ content = {} }: any) => {
             <CssBaseline />
             {/* ZESTY LOGO  bottom right*/}
             {!open && (
-               <button
-                  type="button"
+               <Button
                   onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
-                  style={buttonStyles}
+                  sx={buttonStyles}
                >
                   <img
                      src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
@@ -121,7 +120,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                      alt="Zesty.io Logo"
                   />
                   <span style={zestyStyles}>Compass</span>
-               </button>
+               </Button>
             )}
 
             {open && (
@@ -143,6 +142,6 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                </Box>
             )}
          </ThemeProvider>
-      </div>
+      </Box>
    )
 }
