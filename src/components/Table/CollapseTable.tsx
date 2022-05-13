@@ -181,8 +181,10 @@ function Row({
                   position: "relative",
                }}
             >
-               <button
-                  style={{ cursor: "pointer" }}
+               <Button
+                  variant="contained"
+                  color="secondary"
+                  size="small"
                   onClick={() => {
                      navigator.clipboard.writeText(`content.${keyName}`)
                      setclipboardCopy(true)
@@ -190,7 +192,7 @@ function Row({
                   }}
                >
                   {`{content.${keyName}}`}
-               </button>
+               </Button>
                <Box
                   sx={{
                      position: "absolute",
