@@ -2,6 +2,7 @@ import React from "react"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
 import Box from "@mui/material/Box"
+import { Button } from "@mui/material"
 
 interface Tabs {
    id: number
@@ -30,10 +31,18 @@ export const TabContainer = ({ tabList, settime, setcurrentTab }: any) => {
                aria-label="scrollable auto tabs example"
             >
                {tabList.map((e: any) => (
-                  <Tab label={e.label} value={e.value} />
+                  <CustomBtn label={e.label} value={e.value} />
                ))}
             </Tabs>
          </Box>
       </Box>
+   )
+}
+
+export const CustomBtn = ({ label, value }: any) => {
+   return (
+      <Button variant="contained" color="secondary" size="small">
+         {label}
+      </Button>
    )
 }
