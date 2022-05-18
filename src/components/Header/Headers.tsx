@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import { useTheme } from "@mui/material/styles"
 import Button from "@mui/material/Button"
+import { BtnStyle } from "./Styles"
 interface Props {
    children: React.ReactNode
    content: any
@@ -60,17 +61,28 @@ export const Headers = ({ response, children, content }: Props) => {
                      Content Model
                   </Typography>
                </Box>
-               <Box sx={{ display: "flex", gap: "1rem", paddingLeft: "1rem" }}>
+               <Box
+                  sx={{
+                     alignItems: "center",
+                     display: "flex",
+                     gap: "1rem",
+                     paddingLeft: "1rem",
+                  }}
+               >
                   <Button
+                     component="a"
+                     title="Edit Permissions"
                      href={`https://accounts.zesty.io/instances/${content?.zestyInstanceZUID}`}
                      variant="contained"
                      color="secondary"
                      size="small"
-                     sx={{ textAlign: "center", fontSize: "14px" }}
+                     sx={BtnStyle}
                   >
-                     Edit Permissions
+                     Permissions
                   </Button>
                   <Button
+                     component="a"
+                     title="Edit Content"
                      href={`https://${
                         content?.zestyInstanceZUID || headerZUID(response)
                      }.manager.zesty.io/content/${content?.meta?.model?.zuid}/${
@@ -80,11 +92,13 @@ export const Headers = ({ response, children, content }: Props) => {
                      color="secondary"
                      target="_blank"
                      size="small"
-                     sx={{ textAlign: "center", fontSize: "14px" }}
+                     sx={BtnStyle}
                   >
-                     Edit Content
+                     Content
                   </Button>
                   <Button
+                     component="a"
+                     title="Edit Schema"
                      href={`https://${
                         content?.zestyInstanceZUID || headerZUID(response)
                      }.manager.zesty.io/schema/${content?.meta?.model?.zuid}`}
@@ -92,9 +106,9 @@ export const Headers = ({ response, children, content }: Props) => {
                      color="secondary"
                      size="small"
                      target="_blank"
-                     sx={{ textAlign: "center", fontSize: "14px" }}
+                     sx={BtnStyle}
                   >
-                     Edit Schema
+                     Schema
                   </Button>
 
                   {children}
