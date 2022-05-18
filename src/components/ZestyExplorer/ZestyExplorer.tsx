@@ -14,6 +14,7 @@ import { useDarkMode } from "hooks"
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen"
 import { Helmet } from "react-helmet"
 import { ZestyExplorerBrowser } from "./ZestyExplorerBrowser"
+import { withStyles } from "@material-ui/core/styles"
 
 // dom access highlight function
 const expandBody = (bool: boolean) => {
@@ -58,6 +59,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
       }
 
       fetchJsonData().then((e) => {
+         console.log(e, "not use")
          if (content && Object.keys(content).length === 0) {
             getData()
          } else {
@@ -84,6 +86,17 @@ export const ZestyExplorer = ({ content = {} }: any) => {
    // custom nav tree building
    delete searchObject.navigationCustom
 
+   const StyledButton = withStyles({
+      root: {
+         backgroundColor: "#1b202c",
+         color: "#fff",
+         "&:hover": {
+            backgroundColor: "#1b202c",
+            color: "#fff",
+         },
+      },
+   })(Button)
+
    if (!helper.canUseDOM()) {
       return null
    }
@@ -109,9 +122,9 @@ export const ZestyExplorer = ({ content = {} }: any) => {
             <CssBaseline />
             {/* ZESTY LOGO  bottom right*/}
             {!open && (
-               <Button
+               <StyledButton
                   onClick={() => helper.toggleOpenState(true, setOpen, expandBody)}
-                  sx={buttonStyles}
+                  style={buttonStyles}
                >
                   <img
                      src="https://storage.googleapis.com/brand-assets.zesty.io/zesty-io-app-icon-transparent.png"
@@ -120,7 +133,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
                      alt="Zesty.io Logo"
                   />
                   <span style={zestyStyles}>Compass</span>
-               </Button>
+               </StyledButton>
             )}
 
             {open && (
