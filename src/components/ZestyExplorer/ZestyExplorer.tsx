@@ -137,7 +137,7 @@ export const ZestyExplorer = ({ content = {} }: any) => {
             )}
 
             {open && (
-               <Box>
+               <Box sx={{ fontSize: "14px" }}>
                   <ZestyExplorerBrowser
                      response={response}
                      pageData={pageData}
