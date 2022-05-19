@@ -15,11 +15,11 @@ import { urls } from "constants"
 
 function Row({ keyName }: any) {
    const [showCopy, setShowCopy] = React.useState(false)
+   const [showCopy2, setShowCopy2] = React.useState(false)
+   const [showCopy3, setShowCopy3] = React.useState(false)
    const [clipboardCopy, setclipboardCopy] = React.useState(false)
 
    const theme = useTheme()
-
-   // @ts-ignore
 
    return (
       <React.Fragment>
@@ -42,19 +42,27 @@ function Row({ keyName }: any) {
                }}
             >
                <Button
-                  onMouseEnter={() => setShowCopy(true)}
+                  onMouseEnter={() => {
+                     setShowCopy(true)
+                     setShowCopy2(false)
+                     setShowCopy3(false)
+                  }}
                   onMouseLeave={() => {
                      setShowCopy(false)
+                     setShowCopy2(false)
+                     setShowCopy3(false)
                      setclipboardCopy(false)
                   }}
                   sx={{ cursor: "pointer" }}
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   size="small"
                   onClick={() => {
                      navigator.clipboard.writeText(`{{this.${keyName}}}`)
                      setclipboardCopy(true)
                      setShowCopy(false)
+                     setShowCopy2(false)
+                     setShowCopy3(false)
                   }}
                >
                   {`{{this.${keyName}}}`}
@@ -78,19 +86,27 @@ function Row({ keyName }: any) {
                }}
             >
                <Button
-                  onMouseEnter={() => setShowCopy(true)}
+                  onMouseEnter={() => {
+                     setShowCopy2(true)
+                     setShowCopy3(false)
+                     setShowCopy(false)
+                  }}
                   onMouseLeave={() => {
                      setShowCopy(false)
+                     setShowCopy2(false)
+                     setShowCopy3(false)
                      setclipboardCopy(false)
                   }}
                   sx={{ cursor: "pointer" }}
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   size="small"
                   onClick={() => {
                      navigator.clipboard.writeText(`content.${keyName}`)
                      setclipboardCopy(true)
+                     setShowCopy2(false)
                      setShowCopy(false)
+                     setShowCopy3(false)
                   }}
                >
                   {`{content.${keyName}}`}
@@ -103,7 +119,7 @@ function Row({ keyName }: any) {
                   }}
                >
                   {clipboardCopy && <span>✅ Copied to clipboard!</span>}
-                  {showCopy && <span>📜 Copy</span>}
+                  {showCopy2 && <span>📜 Copy</span>}
                </Box>
             </TableCell>
             <TableCell
@@ -114,19 +130,27 @@ function Row({ keyName }: any) {
                }}
             >
                <Button
-                  onMouseEnter={() => setShowCopy(true)}
+                  onMouseEnter={() => {
+                     setShowCopy3(true)
+                     setShowCopy(false)
+                     setShowCopy2(false)
+                  }}
                   onMouseLeave={() => {
                      setShowCopy(false)
+                     setShowCopy3(false)
+                     setShowCopy2(false)
                      setclipboardCopy(false)
                   }}
                   sx={{ cursor: "pointer" }}
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   size="small"
                   onClick={() => {
                      navigator.clipboard.writeText(`{{${keyName}}}`)
                      setclipboardCopy(true)
                      setShowCopy(false)
+                     setShowCopy3(false)
+                     setShowCopy2(false)
                   }}
                >
                   {`{{${keyName}}}`}
@@ -139,7 +163,7 @@ function Row({ keyName }: any) {
                   }}
                >
                   {clipboardCopy && <span>✅ Copied to clipboard!</span>}
-                  {showCopy && <span>📜 Copy</span>}
+                  {showCopy3 && <span>📜 Copy</span>}
                </Box>
             </TableCell>
          </TableRow>
@@ -179,6 +203,21 @@ function Row({ keyName }: any) {
    )
 }
 
+const btnList = [
+   {
+      name: "Parsely Docs",
+      label: "Parsely Docs",
+      value: "Parsely Docs",
+      href: urls.parselyDocs,
+   },
+   {
+      name: "Next Js Docs",
+      label: "Next Js Docs",
+      value: "Next Js Docs",
+      href: urls.nextJsDocs,
+   },
+]
+
 export const CodeHelperTable = ({
    content,
    metaData,
@@ -192,41 +231,7 @@ export const CodeHelperTable = ({
 
    return (
       <TableContainer onScroll={onScroll} component={Paper} style={TableContainerStyle}>
-         <Box
-            paddingX={2}
-            paddingY={1}
-            sx={{
-               display: "flex",
-               justifyContent: "space-between",
-               alignItems: "center",
-               backgroundColor: theme.palette.zesty.zestyLightBlue,
-            }}
-         >
-            <Subheaders content={content} theme={theme} />
-            <Box sx={{ display: "flex", gap: ".5rem" }}>
-               <Button
-                  sx={{ whiteSpace: "nowrap", cursor: "pointer" }}
-                  color="primary"
-                  size="small"
-                  variant="contained"
-                  target="_blank"
-                  href={urls.parselyDocs}
-               >
-                  Parsely Docs
-               </Button>
-
-               <Button
-                  sx={{ whiteSpace: "nowrap", cursor: "pointer" }}
-                  color="primary"
-                  size="small"
-                  variant="contained"
-                  target="_blank"
-                  href={urls.nextJsDocs}
-               >
-                  Next Js Docs
-               </Button>
-            </Box>
-         </Box>
+         <Subheaders theme={theme} content={content} btnList={btnList} />
          <Table aria-label="collapsible table">
             {/* HEaders */}
             <TableHead
