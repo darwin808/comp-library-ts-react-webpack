@@ -111,8 +111,8 @@ function Row({ keyName }: any) {
                   size="small"
                   onClick={() => {
                      navigator.clipboard.writeText(`content.${keyName}`)
-                     setclipboardCopy(true)
-                     setclipboardCopy2(false)
+                     setclipboardCopy(false)
+                     setclipboardCopy2(true)
                      setclipboardCopy3(false)
                      setShowCopy2(false)
                      setShowCopy(false)
