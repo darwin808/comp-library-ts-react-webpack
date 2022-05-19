@@ -24,30 +24,32 @@ export const JsonDataViewer = ({ content, data, search, setSearch, theme }: Prop
       <Box sx={{ background: "#fff" }}>
          <Subheaders content={content} theme={theme} />
          <SearchAppBar value={search} onChange={setSearch} />
-         <Zoom in={true}>
-            <Fab
-               sx={{ position: "absolute", bottom: "0", right: "0" }}
-               color="secondary"
-               size="small"
-               aria-label="gotoTop"
-               href="#gotoTop"
-            >
-               <KeyboardArrowUpIcon />
-            </Fab>
-         </Zoom>
-         <ReactJson
-            style={{ height: "90vh", overflowY: "scroll" }}
-            name={"data"}
-            // @ts-ignore
-            src={data}
-            theme="flat"
-            iconStyle="square"
-            indentWidth={4}
-            collapsed={2}
-            displayObjectSize
-            displayDataTypes={false}
-            enableClipboard={true}
-         />
+         <Box sx={{ position: "relative" }}>
+            <Zoom in={true}>
+               <Fab
+                  sx={{ position: "absolute", bottom: "0", right: "0" }}
+                  color="secondary"
+                  size="small"
+                  aria-label="gotoTop"
+                  href="#gotoTop"
+               >
+                  <KeyboardArrowUpIcon />
+               </Fab>
+            </Zoom>
+            <ReactJson
+               style={{ height: "auto", overflowY: "scroll" }}
+               name={"data"}
+               // @ts-ignore
+               src={data}
+               theme="flat"
+               iconStyle="square"
+               indentWidth={4}
+               collapsed={2}
+               displayObjectSize
+               displayDataTypes={false}
+               enableClipboard={true}
+            />
+         </Box>
       </Box>
    )
 }
