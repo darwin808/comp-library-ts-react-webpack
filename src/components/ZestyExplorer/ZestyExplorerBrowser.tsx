@@ -1,15 +1,15 @@
-import { dummydata } from "constants/index"
-import * as helper from "utils/index"
+import { dummydata, tabList } from "constants"
+import * as helper from "utils"
 import React from "react"
 import { useFetchWrapper } from "hooks"
 import { fetchData } from "services"
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 import { Loader } from "components"
 import { containerStyle, loginPromp } from "./styles"
 import { Headers } from "components"
-import { tabList } from "constants/index"
 import { CodeHelper, ContentViewer, JsonDataViewer, MetaViewer } from "views"
 import { useTheme } from "@mui/material/styles"
+import { LoginPrompt } from "components/Ui"
 
 export const ZestyExplorerBrowser = ({
    pageData,
@@ -19,7 +19,7 @@ export const ZestyExplorerBrowser = ({
    jsonData,
 }: any) => {
    const content = contentData || dummydata
-   const [currentTab, setcurrentTab] = React.useState("Edit")
+   const [currentTab, setcurrentTab] = React.useState(0)
    const [search, setSearch] = React.useState()
    // this is the data for editing request
    const [metaData, setMetaData] = React.useState([])
@@ -76,19 +76,7 @@ export const ZestyExplorerBrowser = ({
 
    // show failed login prompt
    if (!verifySuccess) {
-      return (
-         <Box sx={loginPromp}>
-            <h1>Please Login</h1>
-            <Button
-               href={`https://accounts.zesty.io/login`}
-               variant="contained"
-               color="secondary"
-               size="small"
-            >
-               Sign in to Zesty.io
-            </Button>
-         </Box>
-      )
+      return <LoginPrompt />
    }
 
    return (
@@ -104,7 +92,7 @@ export const ZestyExplorerBrowser = ({
          </Headers>
          <Box sx={{ position: "relative" }}>
             {time > 0 && <Loader />}
-            {currentTab === "Edit" && (
+            {currentTab === 0 && (
                <ContentViewer
                   content={content}
                   theme={theme}
@@ -114,13 +102,11 @@ export const ZestyExplorerBrowser = ({
                   token={token}
                />
             )}
-            {currentTab === "SEO/Meta" && (
-               <MetaViewer response={response} content={contentData} />
-            )}
-            {currentTab === "JSON" && (
+            {currentTab === 1 && <MetaViewer response={response} content={contentData} />}
+            {currentTab === 2 && (
                <JsonDataViewer data={data} search={search} setSearch={setSearch} />
             )}
-            {currentTab === "Code Helper" && (
+            {currentTab === 3 && (
                <CodeHelper
                   content={content}
                   theme={theme}
