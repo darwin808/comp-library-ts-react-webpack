@@ -24,7 +24,7 @@ export const JsonDataViewer = ({ content, data, search, setSearch, theme }: Prop
       <Box sx={{ background: "#fff" }}>
          <Subheaders content={content} theme={theme} />
          <SearchAppBar value={search} onChange={setSearch} />
-         <Box sx={{ position: "relative" }}>
+         <Box sx={{ position: "relative", height: "50vh" }}>
             <Zoom in={true}>
                <Fab
                   sx={{ position: "absolute", bottom: "0", right: "0" }}
