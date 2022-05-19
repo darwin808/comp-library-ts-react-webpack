@@ -18,6 +18,8 @@ function Row({ keyName }: any) {
    const [showCopy2, setShowCopy2] = React.useState(false)
    const [showCopy3, setShowCopy3] = React.useState(false)
    const [clipboardCopy, setclipboardCopy] = React.useState(false)
+   const [clipboardCopy2, setclipboardCopy2] = React.useState(false)
+   const [clipboardCopy3, setclipboardCopy3] = React.useState(false)
 
    const theme = useTheme()
 
@@ -52,6 +54,8 @@ function Row({ keyName }: any) {
                      setShowCopy2(false)
                      setShowCopy3(false)
                      setclipboardCopy(false)
+                     setclipboardCopy2(false)
+                     setclipboardCopy3(false)
                   }}
                   sx={{ cursor: "pointer" }}
                   variant="contained"
@@ -60,6 +64,8 @@ function Row({ keyName }: any) {
                   onClick={() => {
                      navigator.clipboard.writeText(`{{this.${keyName}}}`)
                      setclipboardCopy(true)
+                     setclipboardCopy2(false)
+                     setclipboardCopy3(false)
                      setShowCopy(false)
                      setShowCopy2(false)
                      setShowCopy3(false)
@@ -96,6 +102,8 @@ function Row({ keyName }: any) {
                      setShowCopy2(false)
                      setShowCopy3(false)
                      setclipboardCopy(false)
+                     setclipboardCopy2(false)
+                     setclipboardCopy3(false)
                   }}
                   sx={{ cursor: "pointer" }}
                   variant="contained"
@@ -104,6 +112,8 @@ function Row({ keyName }: any) {
                   onClick={() => {
                      navigator.clipboard.writeText(`content.${keyName}`)
                      setclipboardCopy(true)
+                     setclipboardCopy2(false)
+                     setclipboardCopy3(false)
                      setShowCopy2(false)
                      setShowCopy(false)
                      setShowCopy3(false)
@@ -118,7 +128,7 @@ function Row({ keyName }: any) {
                      top: "0",
                   }}
                >
-                  {clipboardCopy && <span>✅ Copied to clipboard!</span>}
+                  {clipboardCopy2 && <span>✅ Copied to clipboard!</span>}
                   {showCopy2 && <span>📜 Copy</span>}
                </Box>
             </TableCell>
@@ -140,6 +150,8 @@ function Row({ keyName }: any) {
                      setShowCopy3(false)
                      setShowCopy2(false)
                      setclipboardCopy(false)
+                     setclipboardCopy2(false)
+                     setclipboardCopy3(false)
                   }}
                   sx={{ cursor: "pointer" }}
                   variant="contained"
@@ -147,7 +159,9 @@ function Row({ keyName }: any) {
                   size="small"
                   onClick={() => {
                      navigator.clipboard.writeText(`{{${keyName}}}`)
-                     setclipboardCopy(true)
+                     setclipboardCopy3(true)
+                     setclipboardCopy2(false)
+                     setclipboardCopy(false)
                      setShowCopy(false)
                      setShowCopy3(false)
                      setShowCopy2(false)
@@ -162,7 +176,7 @@ function Row({ keyName }: any) {
                      top: "0",
                   }}
                >
-                  {clipboardCopy && <span>✅ Copied to clipboard!</span>}
+                  {clipboardCopy3 && <span>✅ Copied to clipboard!</span>}
                   {showCopy3 && <span>📜 Copy</span>}
                </Box>
             </TableCell>
