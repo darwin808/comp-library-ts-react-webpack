@@ -37,7 +37,7 @@ export const JsonDataViewer = ({ content, data, search, setSearch, theme }: Prop
                </Fab>
             </Zoom>
             <ReactJson
-               style={{ height: "auto", overflowY: "scroll" }}
+               style={{ height: "80vh", overflowY: "scroll" }}
                name={"data"}
                // @ts-ignore
                src={data}
