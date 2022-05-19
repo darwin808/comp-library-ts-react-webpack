@@ -7,9 +7,9 @@ import { Box, Button } from "@mui/material"
 import { Loader } from "components"
 import { containerStyle, loginPromp } from "./styles"
 import { Headers } from "components"
-import { TabContainer } from "components"
 import { tabList } from "constants/index"
-import { ContentViewer, JsonDataViewer, MetaViewer } from "views"
+import { CodeHelper, ContentViewer, JsonDataViewer, MetaViewer } from "views"
+import { useTheme } from "@mui/material/styles"
 
 export const ZestyExplorerBrowser = ({
    pageData,
@@ -19,7 +19,7 @@ export const ZestyExplorerBrowser = ({
    jsonData,
 }: any) => {
    const content = contentData || dummydata
-   const [currentTab, setcurrentTab] = React.useState("Content Viewer")
+   const [currentTab, setcurrentTab] = React.useState("Edit")
    const [search, setSearch] = React.useState()
    // this is the data for editing request
    const [metaData, setMetaData] = React.useState([])
@@ -31,6 +31,7 @@ export const ZestyExplorerBrowser = ({
    const modelZUID = jsonData?.data?.meta?.model?.zuid
    const instanceZUID = helper.headerZUID(jsonData.res)
 
+   const theme = useTheme()
    console.log(jsonData, "jsondata")
    // get the instance view models  on initial load
    const { loading, verifyFailed, verifySuccess, instances, views, models } =
@@ -92,24 +93,42 @@ export const ZestyExplorerBrowser = ({
 
    return (
       <Box sx={containerStyle}>
-         <Headers content={content} response={response}>
-            {children}
-         </Headers>
-         <TabContainer
+         <Headers
+            content={content}
+            response={response}
             setcurrentTab={setcurrentTab}
             tabList={tabList}
             settime={() => settime(2)}
-         />
+         >
+            {children}
+         </Headers>
          <Box sx={{ position: "relative" }}>
             {time > 0 && <Loader />}
-            {currentTab === "Content Viewer" && (
-               <ContentViewer metaData={metaData} data={data} url={url} token={token} />
+            {currentTab === "Edit" && (
+               <ContentViewer
+                  content={content}
+                  theme={theme}
+                  metaData={metaData}
+                  data={data}
+                  url={url}
+                  token={token}
+               />
             )}
-            {currentTab === "Meta Viewer" && (
+            {currentTab === "SEO/Meta" && (
                <MetaViewer response={response} content={contentData} />
             )}
-            {currentTab === "Json Data Viewer" && (
+            {currentTab === "JSON" && (
                <JsonDataViewer data={data} search={search} setSearch={setSearch} />
+            )}
+            {currentTab === "Code Helper" && (
+               <CodeHelper
+                  content={content}
+                  theme={theme}
+                  metaData={metaData}
+                  data={data}
+                  url={url}
+                  token={token}
+               />
             )}
          </Box>
       </Box>
