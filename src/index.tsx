@@ -10,7 +10,7 @@ import { canUseDOM } from "./utils/index"
 //    console.debug = () => {}
 // }
 
-console.log("dev branch123")
+console.log("development branch555")
 export const main = () => {
    if (!canUseDOM()) {
       return null

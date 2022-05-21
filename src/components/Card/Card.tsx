@@ -6,17 +6,27 @@ import CardContent from "@mui/material/CardContent"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import { TextField } from "@mui/material"
+import { urls } from "constants"
 
-const imgUrl = "https://brand.zesty.io/zesty-io-logo.svg"
 export const OutlineCard = ({ handleCustomDomain, value, onChange }: any) => {
    const card = (
       <React.Fragment>
          <CardContent>
-            <img src={imgUrl} alt="Zesty Explorer" width={"50"} height={"50"} />
-            <Typography color="text.secondary" gutterBottom sx={{ fontSize: "14" }}>
+            <img
+               src={urls.zestyBrandLogo}
+               alt="Zesty Explorer"
+               width={"50"}
+               height={"50"}
+            />
+            <Typography color="text.secondary" gutterBottom sx={{ fontSize: "20px" }}>
                Domain Not Valid
             </Typography>
-            <Typography variant="h5" component="div">
+            <Typography
+               paddingBottom={2}
+               variant="h5"
+               component="div"
+               sx={{ fontSize: "16px" }}
+            >
                Override Domain
             </Typography>
             <TextField
@@ -25,10 +35,16 @@ export const OutlineCard = ({ handleCustomDomain, value, onChange }: any) => {
                variant="outlined"
                value={value}
                onChange={onChange}
+               sx={{ fontSize: "12px" }}
             />
          </CardContent>
          <CardActions>
-            <Button size="small" variant="contained" onClick={handleCustomDomain}>
+            <Button
+               size="small"
+               variant="contained"
+               onClick={handleCustomDomain}
+               sx={{ fontSize: "14px" }}
+            >
                Save
             </Button>
             <Button
@@ -36,6 +52,7 @@ export const OutlineCard = ({ handleCustomDomain, value, onChange }: any) => {
                onClick={() => {
                   window.location.reload()
                }}
+               sx={{ fontSize: "14px" }}
             >
                Close
             </Button>
